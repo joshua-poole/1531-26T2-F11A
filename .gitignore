@@ -1,0 +1,45 @@
+# gitignore - files and folders git should ignore
+# Read more:
+# - https://git-scm.com/docs/gitignore
+# - https://github.com/github/gitignore/blob/main/Node.gitignore
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# Dependency files and directories
+package-lock.json
+node_modules/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# dotenv environment variable files
+.env
+.env.*
+!.env.example
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# Vite files
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+.vite/
