@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "test": "vitest run",
+    "coverage": "vitest run --coverage"
+  },
+  "type": "module",
+  "dependencies": {
+    "crypto-random-string": "^5.0.0",
+    "date-fns": "^4.4.0",
+    "validator": "^13.15.35"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.9",
+    "vitest": "^4.1.9"
+  }
+}
