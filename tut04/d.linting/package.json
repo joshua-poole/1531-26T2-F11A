@@ -1,0 +1,27 @@
+{
+  "name": "x",
+  "version": "1.0.0",
+  "description": "[TOC]",
+  "main": "src/main.ts",
+  "scripts": {
+    "test": "vitest run",
+    "tsc": "tsc --noEmit",
+    "tsx": "tsx",
+    "lint": "eslint",
+    "lint-fix": "eslint --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/eslint-plugin": "^8.61.1",
+    "eslint": "^10.5.0",
+    "globals": "^17.6.0",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.61.1",
+    "vitest": "^4.1.9"
+  }
+}
