@@ -1,0 +1,5 @@
+export const INVALID_NAME = 'INVALID_NAME';
+export const INVALID_AGE = 'INVALID_AGE';
+export const DUPLICATE_NAME = 'DUPLICATE_NAME';
+export const NO_PEOPLE = 'NO_PEOPLE';
+export const INVALID_PERSON_ID = 'INVALID_PERSON_ID';

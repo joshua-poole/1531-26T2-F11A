@@ -1,0 +1,33 @@
+{
+  "name": "names-ages",
+  "version": "1.0.0",
+  "description": "[TOC]",
+  "main": "src/server.ts",
+  "scripts": {
+    "start": "tsx src/server.ts",
+    "dev": "tsx watch --clear-screen=false --include 'src/config.json' src/server.ts",
+    "test": "vitest run",
+    "tsx": "tsx",
+    "tsc": "tsc --noEmit",
+    "lint": "eslint **/*.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "morgan": "^1.11.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/morgan": "^1.9.10",
+    "@typescript-eslint/eslint-plugin": "^8.62.0",
+    "eslint": "^10.6.0",
+    "sync-request-curl": "^4.0.2",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9"
+  }
+}
