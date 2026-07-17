@@ -1,0 +1,190 @@
+openapi: 3.0.3
+
+info:
+  title: Tut07 Movie API
+  version: 1.0.0
+  description: API for managing a simple movie collection.
+
+servers:
+  - url: http://127.0.0.1:{PORT}
+    variables:
+      PORT:
+        default: "49152"
+
+tags:
+  - name: Movies
+
+paths:
+  /movie/add:
+    post:
+      tags:
+        - Movies
+      summary: Add a new movie
+      operationId: addMovie
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MovieDetail'
+      responses:
+        "200":
+          description: Movie created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddMovieResponse'
+        "400":
+          description: |
+            Invalid movie details.
+
+            Possible errors:
+            - **INVALID_MOVIE_DETAILS**: title is an empty string.
+            - **INVALID_MOVIE_DETAILS**: director is an empty string.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /movie/{movieid}:
+    put:
+      tags:
+        - Movies
+      summary: Edit an existing movie
+      operationId: editMovie
+      parameters:
+        - name: movieid
+          in: path
+          required: true
+          description: ID of the movie
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MovieDetail'
+      responses:
+        "200":
+          description: Movie updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyObject'
+        "400":
+          description: |
+            The request could not be completed.
+
+            Possible errors:
+            - **INVALID_MOVIE_ID**: movieid does not refer to an existing movie.
+            - **INVALID_MOVIE_DETAILS**: title is an empty string.
+            - **INVALID_MOVIE_DETAILS**: director is an empty string.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                InvalidMovieId:
+                  summary: Movie does not exist
+                  value:
+                    error: INVALID_MOVIE_ID
+                    message: Movie ID does not refer to a valid movie.
+                EmptyTitle:
+                  summary: Empty title
+                  value:
+                    error: INVALID_MOVIE_DETAILS
+                    message: Title cannot be empty string.
+
+  /movies/list:
+    get:
+      tags:
+        - Movies
+      summary: List all movies
+      operationId: listMovies
+      responses:
+        "200":
+          description: List of movies
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovieListResponse'
+
+  /clear:
+    delete:
+      tags:
+        - Movies
+      summary: Clear all movies
+      operationId: clearMovies
+      responses:
+        "200":
+          description: Database cleared
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmptyObject'
+
+components:
+  schemas:
+
+    MovieDetail:
+      type: object
+      required:
+        - title
+        - director
+      properties:
+        title:
+          type: string
+          example: Inception
+        director:
+          type: string
+          example: Christopher Nolan
+
+    Movie:
+      type: object
+      properties:
+        movieid:
+          type: integer
+          example: 1
+        title:
+          type: string
+          example: Inception
+        director:
+          type: string
+          example: Christopher Nolan
+
+    AddMovieResponse:
+      type: object
+      properties:
+        movieid:
+          type: integer
+          example: 1
+
+    MovieListResponse:
+      type: object
+      properties:
+        movies:
+          type: array
+          items:
+            $ref: '#/components/schemas/Movie'
+
+    ClearResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          example: INVALID_MOVIE_DETAILS
+        message:
+          type: string
+          example: Title cannot be empty string.
+
+    EmptyObject:
+      type: object
+      description: an empty object - nothing to see here!
